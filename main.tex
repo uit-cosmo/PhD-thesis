@@ -1,0 +1,148 @@
+\documentclass[11pt,twoside,openright]{book}
+\usepackage[paperwidth=170mm,paperheight=240mm,top=20mm,total={130mm,195mm}]{geometry}
+% Reccomendations for thesis printing:
+% - Write in (a) A4, (b) 170x240 mm.
+% - Minimum margin of 2 cm on top and sides, 2.5 on bottom. Page numbers underneath margin. (Is this for a or b?) latex A4 does well above this automatically.
+% - Fontsize: (a) 12, (b) 11
+% - Numbering: Bottom centered or side aliged (right align odd, left align even numbers)
+% - Chapters, table of contents, foreword etc on odd (right) pages.
+
+% Force bibliography to appear in table of contents
+\usepackage[nottoc]{tocbibind}
+
+%For the title page pdf
+\usepackage{pdfpages}
+
+% For fancy quote
+\usepackage{epigraph}
+
+% Fancy chapter headings
+\usepackage{titlesec, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+
+% For norwegian characters (fontenc also needed for fancy chapter headings).
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{comment}
+
+% urls
+\usepackage[hidelinks]{hyperref}
+
+% Math
+\usepackage{amsmath,bm}
+
+% Subfigures etc
+\usepackage{graphicx,subcaption}
+
+\usepackage{dirtytalk}
+
+% Reference management
+\newcommand{\Eqref}[1]{Eq.~\eqref{#1}}
+\newcommand{\Eqsref}[1]{Eqs.~\eqref{#1}}
+\newcommand{\Figref}[1]{Fig.~\ref{#1}}
+\newcommand{\Figsref}[1]{Figs.~\ref{#1}}
+\newcommand{\Secref}[1]{Sec.~\ref{#1}}
+\newcommand{\Chapref}[1]{Chapter~\ref{#1}}
+
+
+\newcommand{\first}{Paper I}
+
+% Bibliography management
+\usepackage[numbers,sort,compress]{natbib}
+%\bibliographystyle{apsrev4-1}
+\bibliographystyle{unsrtnat}
+
+
+\begin{document}
+\frontmatter
+\includepdf{figures/PHD_first_page.pdf}
+
+% To ensure: titlepage-blank-epigraph-blank-preface, with preface the first numbered page.
+% We start counting from the first page, wiich is the epigraph.
+\newpage\null\thispagestyle{empty}\newpage
+
+\setcounter{page}{1}\thispagestyle{empty}\newpage
+%\newpage\null\thispagestyle{empty}\newpage
+
+\section*{Abstract}
+\input{abstract.tex}
+
+\newpage\null\newpage
+\section*{Acknowledgements}
+\input{acknowledgement.tex}
+\newpage\null\newpage
+
+\tableofcontents
+
+\mainmatter
+
+% Chapter: First chapter 
+\chapter{Fluctuations in magnetized plasmas}
+\input{first_chapter.tex}
+
+% Chapter: Second chapter 
+\chapter{Reduced fluid models for SOL plasmas}
+\input{second_chapter.tex}
+
+\chapter{Stochastic modeling}
+\input{third_chapter.tex}
+
+\chapter{Summary of Papers}\label{ch:sum-paper}
+\input{summary_of_papers.tex}
+
+%\section{List of other works}
+%{\bf Unpublished manuscripts}\\
+%{\bf Oral Conference Presentations}\\
+
+
+\chapter{Conclusion and future work}\label{ch:conclusion}
+\input{conclusion.tex}
+
+
+
+
+\backmatter
+
+\bibliography{sources}
+%\begin{comment}
+% Page break in TOC
+\addtocontents{toc}{\protect\newpage}
+\chapter{Paper I: \\ Intermittent fluctuations due to Lorentzian pulses in turbulent thermal convection}
+\chaptermark{Paper I}
+G. Decristoforo, A. Theodorsen and O. E. Garcia,\\
+Physics of Fluids {\bf 32}, 085102 (2020),\\
+doi:\href{https://doi.org/10.1063/5.0012017}{10.1063/5.0012017}
+\newpage\null\newpage
+\includepdf[pages=-]{papers/Intermittent_fluctuations.pdf}
+
+
+\chapter{Paper II: \\ Dirac comb and exponential frequency spectra in chaotic dynamics}
+\chaptermark{Paper II}
+A. Theodorsen, G. Decristoforo and O. E. Garcia,\\
+To be submitted to Chaos: An Interdisciplinary Journal of Nonlinear Science
+\newpage\null\newpage
+\includepdf[pages=-]{papers/Dirac_comb.pdf}
+
+\chapter{Paper III: \\ Numerical turbulence simulations of intermittent fluctuations in the scrape-off layer of magnetized plasmas}
+\chaptermark{Paper III}
+G. Decristoforo, A. Theodorsen, J. Omotani, T. Nicholas, and O. E. Garcia,\\
+Submitted to Physics of Plasmas on 15.2.2021,\\
+Available online: \href{https://arxiv.org/abs/2102.04723}{arXiv:2102.04723 [physics.plasm-ph]}
+\newpage\null\newpage
+\includepdf[pages=-]{papers/Numerical_turbulence.pdf}
+
+
+
+\chapter{Paper IV: \\ Blob interactions in 2D scrape-off layer simulations}
+\chaptermark{Paper IV}
+G. Decristoforo, F. Militello, T. Nicholas, J. Omotani, C. Marsden, N. Walkden and O. E. Garcia,\\
+Physics of Plasmas {\bf 27}, 122301 (2020),\\
+doi:\href{https://doi.org/10.1063/5.0021314}{10.1063/5.0021314}
+\newpage\null\newpage
+\includepdf[pages=-]{papers/Blob_interactions.pdf}
+%\end{comment}
+\end{document}
